@@ -99,6 +99,10 @@ class ViewController: UIViewController {
             timer.invalidate()
             timer = nil
             PlayPauseButton.setTitle("Play", for: .normal)
+            //他のボタンを押せるようにする
+            GoButton.isEnabled = true
+            BackButton.isEnabled = true
+            
         }
     }
     
