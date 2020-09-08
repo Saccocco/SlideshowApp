@@ -71,14 +71,16 @@ class ViewController: UIViewController {
             BackButton.isEnabled = true
             //ボタンをPlayにする
             PlayPauseButton.setTitle("Play", for: .normal)
+            
         } else {
             // タイマーの作成、始動
             timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+            //ボタンをPauseにする
+            PlayPauseButton.setTitle("Pause", for: .normal)
             //他のボタンを押せないようにする
             GoButton.isEnabled = false
             BackButton.isEnabled = false
-            //ボタンをPauseにする
-            PlayPauseButton.setTitle("Pause", for: .normal)
+            
         }
     }
     //タイマー式で自動再生する
@@ -90,13 +92,14 @@ class ViewController: UIViewController {
         }
         print("imageIndex:\(imageIndex)")
         ImageView.image = UIImage(named: images[imageIndex])
-           }
+    }
     //画像拡大ボタンを押したら、タイマーが止まる
     @IBAction func ScaleButton(_ sender: Any) {
         if timer != nil{
-        timer.invalidate()
-           timer = nil
-      }
+            timer.invalidate()
+            timer = nil
+            PlayPauseButton.setTitle("Play", for: .normal)
+        }
     }
     
     
